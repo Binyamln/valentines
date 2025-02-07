@@ -8,22 +8,24 @@
 </head>
 <body>
   <div id="container">
-    <!-- Hearts on left and right, hidden at first -->
+    <!-- Hearts on left/right, hidden by default in CSS -->
     <div id="heart-left">
-      <img id="left-hearts-image" src="hearts.gif" alt="Hearts on left" />
+      <img id="left-hearts-image" src="hearts.gif" alt="Hearts on the left" />
     </div>
     <div id="heart-right">
-      <img id="right-hearts-image" src="hearts.gif" alt="Hearts on right" />
+      <img id="right-hearts-image" src="hearts.gif" alt="Hearts on the right" />
     </div>
 
-    <!-- Main image will appear here (miffypink.gif initially) -->
+    <!-- Main image (miffypink.gif or miffyheartbaloon.png) goes here -->
     <div id="image-container"></div>
 
+    <!-- Text container with question and buttons -->
     <div id="text-container">
       <div id="question">Would you like to be my valentine?</div>
       <div id="options">
-        <!-- The Yes button is absolutely positioned (see CSS) -->
+        <!-- The Yes button is static -->
         <button id="yes-button" onclick="selectOption('yes')">Yes</button>
+        <!-- The No button runs away on mouseover (see script.js) -->
         <button id="no-button" onclick="selectOption('no')">No</button>
       </div>
     </div>
