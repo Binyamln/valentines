@@ -1,0 +1,73 @@
+/* style.css */
+
+/* Make the font normal (Arial, sans-serif) */
+body {
+    font-family: Arial, sans-serif; /* Normal font */
+    text-align: center;
+    margin: 0;
+    background-color: #FADADD; /* Light pink background */
+}
+
+/* Position container relative so we can absolutely-position hearts on left/right */
+#container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#image-container {
+    /* This container will hold the main image (miffypink or miffyheartbaloon) */
+    margin-bottom: 20px;
+}
+
+#question {
+    /* Normal font for the question, bigger size if desired */
+    font-size: 32px;
+    font-weight: normal;
+}
+
+/* Buttons container */
+#options {
+    margin-top: 20px;
+}
+
+/* Style for the two buttons */
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 20px;
+    font-family: Arial, sans-serif; /* Normal font, no cursive */
+    background-color: #FB607F;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Hide hearts at the beginning (we will show them after "Yes") */
+#heart-left,
+#heart-right {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Left hearts image container */
+#heart-left {
+    left: 0;
+}
+
+/* Right hearts image container */
+#heart-right {
+    right: 0;
+}
+
+/* Optional: set a max-width for the hearts.gif if needed */
+#left-hearts-image,
+#right-hearts-image {
+    max-width: 150px;
+    height: auto;
+}
