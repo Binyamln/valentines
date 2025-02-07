@@ -1,41 +1,39 @@
-/*************************************
-  1. RUN-AWAY LOGIC ON YES-BUTTON 
- *************************************/
-// This function repositions the "Yes" button randomly 
-// within the container whenever mouse hovers over it.
+// 1. RUN-AWAY LOGIC FOR "NO" BUTTON
 function runAwayFromCursor() {
-    const yesBtn = document.getElementById('yes-button');
+    const noBtn = document.getElementById('no-button');
     const container = document.getElementById('container');
   
-    // Get container's width/height
+    // Container dimensions
     const rect = container.getBoundingClientRect();
   
-    // Subtract the button size so we don't place it partially out of container
-    const maxX = rect.width - yesBtn.offsetWidth;
-    const maxY = rect.height - yesBtn.offsetHeight;
+    // Subtract the button size so it doesn't go partially off screen
+    const maxX = rect.width - noBtn.offsetWidth;
+    const maxY = rect.height - noBtn.offsetHeight;
   
     // Generate random new (left, top)
     const newLeft = Math.floor(Math.random() * maxX);
     const newTop = Math.floor(Math.random() * maxY);
   
-    // Apply new position
-    yesBtn.style.left = newLeft + 'px';
-    yesBtn.style.top = newTop + 'px';
+    // Apply the new position
+    noBtn.style.left = newLeft + 'px';
+    noBtn.style.top = newTop + 'px';
   }
   
-  // Attach mouseover listener to "Yes" button to make it run away
+  // Attach mouseover listener to "No" button after DOM is loaded
   document.addEventListener('DOMContentLoaded', () => {
-    const yesBtn = document.getElementById('yes-button');
-    yesBtn.addEventListener('mouseover', runAwayFromCursor);
+    const noBtn = document.getElementById('no-button');
+    noBtn.addEventListener('mouseover', runAwayFromCursor);
+  
+    // Display initial image (miffypink.gif) once everything is ready
+    displayMiffyPink();
   });
   
-  
-  /*************************************
-    2. BUTTON CLICK HANDLER
-   *************************************/
+  /************************************
+   2. CLICK HANDLER FOR YES/NO BUTTONS
+   ************************************/
   function selectOption(option) {
     if (option === 'yes') {
-      // (A) Flash rainbow colors, then show "miffyheartbaloon.png" + "I miss you so much"
+      // Flash rainbow, then show "miffyheartbaloon.png"
       flashRainbowColors(function() {
         document.getElementById('question').style.display = 'none';
         document.getElementById('options').style.display = 'none';
@@ -43,7 +41,7 @@ function runAwayFromCursor() {
       });
     } 
     else if (option === 'no') {
-      // (B) No button changes text and makes yes button bigger
+      // If user somehow manages to click "No", do the usual "You sure?" + enlarge "Yes"
       document.getElementById('no-button').innerText = 'You sure?';
       const yesButton = document.getElementById('yes-button');
       const currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
@@ -55,10 +53,9 @@ function runAwayFromCursor() {
     }
   }
   
-  
-  /*************************************
-    3. RAINBOW FLASH
-   *************************************/
+  /************************************
+   3. RAINBOW FLASH
+   ************************************/
   function flashRainbowColors(callback) {
     const colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'];
     let i = 0;
@@ -74,11 +71,10 @@ function runAwayFromCursor() {
     }, 2000);
   }
   
-  
-  /*************************************
-    4. IMAGE DISPLAY FUNCTIONS 
-   *************************************/
-  // Show miffypink.gif on load
+  /************************************
+   4. IMAGE DISPLAY FUNCTIONS
+   ************************************/
+  // Show miffypink.gif initially
   function displayMiffyPink() {
     const imageContainer = document.getElementById('image-container');
     const miffyPinkImage = new Image();
@@ -86,14 +82,15 @@ function runAwayFromCursor() {
     miffyPinkImage.alt = 'Miffy Pink';
   
     miffyPinkImage.onload = () => {
+      imageContainer.innerHTML = '';
       imageContainer.appendChild(miffyPinkImage);
     };
   }
   
-  // Show miffyheartbaloon.png + "I miss you so much"
+  // Show miffyheartbaloon.png + "I miss you so much!"
   function displayMiffyHeart() {
     const imageContainer = document.getElementById('image-container');
-    imageContainer.innerHTML = ''; // clear old image
+    imageContainer.innerHTML = '';
   
     const miffyHeartImage = new Image();
     miffyHeartImage.src = 'miffyheartbaloon.png';
@@ -102,23 +99,15 @@ function runAwayFromCursor() {
     miffyHeartImage.onload = () => {
       imageContainer.appendChild(miffyHeartImage);
   
-      // Show hearts.gif on the left/right
+      // Reveal hearts on left/right
       document.getElementById('heart-left').style.display = 'block';
       document.getElementById('heart-right').style.display = 'block';
   
-      // Create a text element: "I miss you so much!"
+      // Create "I miss you so much!"
       const missYouText = document.createElement('div');
       missYouText.id = 'miss-you-text';
       missYouText.innerText = 'I miss you so much!';
       imageContainer.appendChild(missYouText);
     };
   }
-  
-  
-  /*************************************
-    5. ON PAGE LOAD
-   *************************************/
-  // Display the initial miffypink.gif
-  // We can do this on DOMContentLoaded to ensure container is available
-  document.addEventListener('DOMContentLoaded', displayMiffyPink);
   
