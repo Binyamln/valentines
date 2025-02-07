@@ -8,7 +8,8 @@ body {
     background-color: #FADADD; /* Light pink */
   }
   
-  /* Main container is position: relative so the "No" button can move within it */
+  /* The main container should be position: relative; 
+     so absolutely positioned children move within it. */
   #container {
     position: relative;
     width: 100%;
@@ -29,12 +30,14 @@ body {
     font-size: 32px;
   }
   
-  /* Buttons container */
+  /* Buttons container (still normal flow). */
   #options {
     margin-top: 20px;
+    /* Optionally, you can set position: relative; 
+       if you only want the No button to move inside #options. */
   }
   
-  /* Both buttons share basic styling */
+  /* --- Both buttons share basic styling --- */
   button {
     padding: 10px 20px;
     margin: 0 10px;
@@ -45,17 +48,22 @@ body {
     cursor: pointer;
   }
   
-  /* ========== NO BUTTON RUNS AWAY ========== */
-  #no-button {
-    position: absolute; /* So we can move it around using script */
-    left: 50%;
-    top: 0; 
-    transform: translateX(-50%);
-    /* Optional transition for a smoother "jump" */
-    transition: left 0.3s ease, top 0.3s ease;
+  /* (A) YES button - static positioning, does NOT move. */
+  #yes-button {
+    /* By default, it's position: static. 
+       No special positioning needed here. */
   }
   
-  /* Hide hearts on load */
+  /* (B) NO button - absolute positioning, so it can jump around. */
+  #no-button {
+    position: absolute; /* So we can move it around in script */
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: left 0.3s ease, top 0.3s ease; /* For a smoother jump */
+  }
+  
+  /* Hide hearts initially */
   #heart-left,
   #heart-right {
     display: none;
@@ -67,18 +75,18 @@ body {
   #heart-left {
     left: 0;
   }
-  
   #heart-right {
     right: 0;
   }
   
+  /* Hearts images */
   #left-hearts-image,
   #right-hearts-image {
     max-width: 150px;
     height: auto;
   }
   
-  /* "I miss you so much" styling */
+  /* "I miss you so much" text styling */
   #miss-you-text {
     margin-top: 20px;
     font-size: 24px;

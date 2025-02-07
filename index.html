@@ -16,16 +16,16 @@
       <img id="right-hearts-image" src="hearts.gif" alt="Hearts on the right" />
     </div>
 
-    <!-- Main image (miffypink.gif or miffyheartbaloon.png) goes here -->
+    <!-- Main image appears here (miffypink.gif initially) -->
     <div id="image-container"></div>
 
-    <!-- Text container with question and buttons -->
     <div id="text-container">
       <div id="question">Would you like to be my valentine?</div>
+      <!-- We can keep both buttons here, but see the CSS note below. -->
       <div id="options">
-        <!-- The Yes button is static -->
+        <!-- Yes button: static, does NOT run away -->
         <button id="yes-button" onclick="selectOption('yes')">Yes</button>
-        <!-- The No button runs away on mouseover (see script.js) -->
+        <!-- No button: runs away on mouseover -->
         <button id="no-button" onclick="selectOption('no')">No</button>
       </div>
     </div>

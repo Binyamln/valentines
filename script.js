@@ -1,18 +1,20 @@
 // script.js
 
-// 1. Make the NO button run away on mouseover
+// 1. NO button moves away on mouseover
 function runAwayFromCursor() {
     const noBtn = document.getElementById('no-button');
-    const container = document.getElementById('container');
+    const container = document.getElementById('container'); 
+    // Because #container is position: relative, 
+    // the No button's absolute coords are relative to #container.
   
-    // Get container's dimensions
+    // Get container size
     const rect = container.getBoundingClientRect();
   
-    // Subtract the button size to avoid going partially offscreen
+    // Subtract button size to avoid partial off-screen
     const maxX = rect.width - noBtn.offsetWidth;
     const maxY = rect.height - noBtn.offsetHeight;
   
-    // Random new (left, top)
+    // Generate random new (left, top)
     const newLeft = Math.floor(Math.random() * maxX);
     const newTop = Math.floor(Math.random() * maxY);
   
@@ -21,12 +23,12 @@ function runAwayFromCursor() {
     noBtn.style.top = newTop + 'px';
   }
   
-  // 2. Attach the mouseover listener to the NO button (after DOM loads)
+  // 2. Attach event listener to NO button (mouseover => runAway)
   document.addEventListener('DOMContentLoaded', () => {
     const noBtn = document.getElementById('no-button');
     noBtn.addEventListener('mouseover', runAwayFromCursor);
   
-    // Show the initial miffypink.gif
+    // Display initial Miffy pink
     displayMiffyPink();
   });
   
@@ -35,7 +37,7 @@ function runAwayFromCursor() {
   ***********************************************/
   function selectOption(option) {
     if (option === 'yes') {
-      // Flash rainbow, then show hearts and "miffyheartbaloon.png"
+      // Flash rainbow, then show hearts + miffyheartbaloon.png
       flashRainbowColors(() => {
         document.getElementById('question').style.display = 'none';
         document.getElementById('options').style.display = 'none';
@@ -44,7 +46,7 @@ function runAwayFromCursor() {
     } else if (option === 'no') {
       // If user manages to click "No"
       document.getElementById('no-button').innerText = 'You sure?';
-      // Increase font size of "Yes" button
+      // Increase font size of the Yes button
       const yesButton = document.getElementById('yes-button');
       const currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
       const newSize = parseFloat(currentFontSize) * 2;
@@ -55,7 +57,7 @@ function runAwayFromCursor() {
   }
   
   /***********************************************
-   4. Flash rainbow effect
+   4. Rainbow flash
   ***********************************************/
   function flashRainbowColors(callback) {
     const colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'];
@@ -73,15 +75,14 @@ function runAwayFromCursor() {
   }
   
   /***********************************************
-   5. Image display
+   5. Image Display: Miffy Pink & Miffy Heart
   ***********************************************/
-  // Show miffypink.gif on page load
   function displayMiffyPink() {
     const imageContainer = document.getElementById('image-container');
     imageContainer.innerHTML = '';
   
     const miffyPinkImage = new Image();
-    miffyPinkImage.src = 'miffypink.gif'; // must exist in same folder
+    miffyPinkImage.src = 'miffypink.gif';  // adjust if in subfolder
     miffyPinkImage.alt = 'Miffy Pink';
   
     miffyPinkImage.onload = () => {
@@ -89,23 +90,22 @@ function runAwayFromCursor() {
     };
   }
   
-  // Show miffyheartbaloon.png and hearts, plus "I miss you so much!"
   function displayMiffyHeart() {
     const imageContainer = document.getElementById('image-container');
     imageContainer.innerHTML = '';
   
     const miffyHeartImage = new Image();
-    miffyHeartImage.src = 'miffyheartbaloon.png'; // must exist in same folder
+    miffyHeartImage.src = 'miffyheartbaloon.png'; 
     miffyHeartImage.alt = 'Miffy Heart Balloon';
   
     miffyHeartImage.onload = () => {
       imageContainer.appendChild(miffyHeartImage);
   
-      // Reveal the hearts only after YES
+      // Show hearts now that "Yes" was clicked
       document.getElementById('heart-left').style.display = 'block';
       document.getElementById('heart-right').style.display = 'block';
   
-      // Add "I miss you so much!"
+      // "I miss you so much!"
       const missYouText = document.createElement('div');
       missYouText.id = 'miss-you-text';
       missYouText.innerText = 'I miss you so much!';
