@@ -8,7 +8,7 @@ body {
     background-color: #FADADD; /* Light pink */
   }
   
-  /* The main container is positioned relative so we can move the yes-button absolutely */
+  /* Main container is position: relative so the "No" button can move within it */
   #container {
     position: relative;
     width: 100%;
@@ -19,7 +19,7 @@ body {
     justify-content: center;
   }
   
-  /* Main Miffy image container */
+  /* Container for the main image */
   #image-container {
     margin-bottom: 20px;
   }
@@ -27,40 +27,38 @@ body {
   /* The question text */
   #question {
     font-size: 32px;
-    font-weight: normal;
   }
   
-  /* Button container */
+  /* Buttons container */
   #options {
     margin-top: 20px;
   }
   
-  /* Both buttons have similar styling */
+  /* Both buttons share basic styling */
   button {
     padding: 10px 20px;
     margin: 0 10px;
     font-size: 20px;
-    font-family: Arial, sans-serif;
     background-color: #FB607F;
     color: white;
     border: none;
     cursor: pointer;
   }
   
-  /* ========== RUN-AWAY YES BUTTON ========== */
-  #yes-button {
-    position: absolute; /* so we can move it around inside #options or #container */
+  /* ========== NO BUTTON RUNS AWAY ========== */
+  #no-button {
+    position: absolute; /* So we can move it around using script */
     left: 50%;
-    top: 0; /* We'll move it in JS */
+    top: 0; 
     transform: translateX(-50%);
-    /* Optional: transition to see it jump smoothly */
+    /* Optional transition for a smoother "jump" */
     transition: left 0.3s ease, top 0.3s ease;
   }
   
-  /* Hide hearts by default */
+  /* Hide hearts on load */
   #heart-left,
   #heart-right {
-    display: none; 
+    display: none;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -74,18 +72,18 @@ body {
     right: 0;
   }
   
-  /* Control hearts.gif sizing if needed */
   #left-hearts-image,
   #right-hearts-image {
     max-width: 150px;
     height: auto;
   }
   
-  /* If you want custom styling for the "I miss you so much!" text */
+  /* "I miss you so much" styling */
   #miss-you-text {
     margin-top: 20px;
     font-size: 24px;
     color: #333;
     font-weight: bold;
+    text-align: center;
   }
   
