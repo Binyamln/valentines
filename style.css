@@ -1,32 +1,41 @@
+/* style.css */
+
+/* Basic styling */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
-    background-color: #FADADD;
+    background-color: #FADADD; /* Light pink */
   }
   
-  /* Container is positioned relative so the button can be positioned absolutely */
+  /* The main container is positioned relative so we can move the yes-button absolutely */
   #container {
     position: relative;
     width: 100%;
-    height: 100vh;
-    /* Center content with flex */
+    height: 100vh; /* Full viewport height */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
   
-  #question {
-    font-size: 32px;
+  /* Main Miffy image container */
+  #image-container {
+    margin-bottom: 20px;
   }
   
-  /* Buttons container */
+  /* The question text */
+  #question {
+    font-size: 32px;
+    font-weight: normal;
+  }
+  
+  /* Button container */
   #options {
     margin-top: 20px;
   }
   
-  /* Both buttons have the same styling for example */
+  /* Both buttons have similar styling */
   button {
     padding: 10px 20px;
     margin: 0 10px;
@@ -38,11 +47,45 @@ body {
     cursor: pointer;
   }
   
-  /* The "Yes" button is absolutely positioned so it can move around the container */
+  /* ========== RUN-AWAY YES BUTTON ========== */
   #yes-button {
-    position: absolute; /* critical for run-away effect */
+    position: absolute; /* so we can move it around inside #options or #container */
     left: 50%;
+    top: 0; /* We'll move it in JS */
+    transform: translateX(-50%);
+    /* Optional: transition to see it jump smoothly */
+    transition: left 0.3s ease, top 0.3s ease;
+  }
+  
+  /* Hide hearts by default */
+  #heart-left,
+  #heart-right {
+    display: none; 
+    position: absolute;
     top: 50%;
-    transform: translate(-50%, -50%); /* initial center position */
+    transform: translateY(-50%);
+  }
+  
+  #heart-left {
+    left: 0;
+  }
+  
+  #heart-right {
+    right: 0;
+  }
+  
+  /* Control hearts.gif sizing if needed */
+  #left-hearts-image,
+  #right-hearts-image {
+    max-width: 150px;
+    height: auto;
+  }
+  
+  /* If you want custom styling for the "I miss you so much!" text */
+  #miss-you-text {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
   }
   
