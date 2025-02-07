@@ -1,34 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Would You Like To Be My Valentine?</title>
-    
-    <!-- We removed the link to the Sacramento font to make font 'normal' (Arial) -->
-    <link rel="stylesheet" href="style.css"> <!-- Link to external stylesheet -->
+  <meta charset="UTF-8" />
+  <title>Run Away Button Example</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <!-- Two containers for hearts.gif on the left and right (hidden at first) -->
-        <div id="heart-left">
-            <img id="left-hearts-image" src="hearts.gif" alt="Hearts on left" />
-        </div>
-        <div id="heart-right">
-            <img id="right-hearts-image" src="hearts.gif" alt="Hearts on right" />
-        </div>
-
-        <div id="image-container"></div> <!-- Container for displaying the main image -->
-        
-        <div id="text-container">
-            <div id="question">Would you like to be my valentine?</div> <!-- Question -->
-            <div id="options">
-                <button id="yes-button" onclick="selectOption('yes')">Yes</button> <!-- Yes button -->
-                <button id="no-button" onclick="selectOption('no')">No</button> <!-- No button -->
-            </div>
-        </div>
+  <div id="container">
+    <div id="text-container">
+      <div id="question">Would you like to be my valentine?</div>
+      <div id="options">
+        <button id="yes-button" onclick="selectOption('yes')">Yes</button>
+        <button id="no-button" onclick="selectOption('no')">No</button>
+      </div>
     </div>
-
-    <script src="script.js"></script> <!-- Link to external JavaScript file -->
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

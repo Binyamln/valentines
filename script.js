@@ -75,3 +75,60 @@ function displayMiffyHeart() {
 
 // Show miffypink.gif initially
 displayMiffyPink();
+
+
+
+// Function to handle button click events
+function selectOption(option) {
+    if (option === 'yes') {
+      alert("Yay! You clicked 'Yes' (somehow)!");
+      // ... any other code you want to run on "Yes"
+    } else if (option === 'no') {
+      document.getElementById('no-button').innerText = 'You sure?';
+    } else {
+      alert('Invalid option!');
+    }
+  }
+  
+  // (Optional) Flash rainbow colors
+  function flashRainbowColors(callback) {
+    var colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'];
+    var i = 0;
+    var interval = setInterval(function() {
+      document.body.style.backgroundColor = colors[i];
+      i = (i + 1) % colors.length;
+    }, 200);
+  
+    setTimeout(function() {
+      clearInterval(interval);
+      document.body.style.backgroundColor = '';
+      if (callback) callback();
+    }, 2000);
+  }
+  
+  /* --------------------
+     RUN-AWAY BUTTON LOGIC
+     -------------------- */
+  function runAway() {
+    var yesBtn = document.getElementById('yes-button');
+    var container = document.getElementById('container');
+  
+    // Container's bounding rectangle (for width/height)
+    var rect = container.getBoundingClientRect();
+  
+    // Subtract the button's width/height so it doesn't go out of bounds
+    var maxX = rect.width - yesBtn.offsetWidth;
+    var maxY = rect.height - yesBtn.offsetHeight;
+  
+    // Random new position
+    var newLeft = Math.floor(Math.random() * maxX);
+    var newTop = Math.floor(Math.random() * maxY);
+  
+    // Apply the new position
+    yesBtn.style.left = newLeft + 'px';
+    yesBtn.style.top = newTop + 'px';
+  }
+  
+  // Add an event listener to the "Yes" button so it moves on mouseover
+  document.getElementById('yes-button').addEventListener('mouseover', runAway);
+  

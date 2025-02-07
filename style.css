@@ -1,73 +1,48 @@
-/* style.css */
-
-/* Make the font normal (Arial, sans-serif) */
 body {
-    font-family: Arial, sans-serif; /* Normal font */
+    font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
-    background-color: #FADADD; /* Light pink background */
-}
-
-/* Position container relative so we can absolutely-position hearts on left/right */
-#container {
+    background-color: #FADADD;
+  }
+  
+  /* Container is positioned relative so the button can be positioned absolutely */
+  #container {
     position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Center content with flex */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-}
-
-#image-container {
-    /* This container will hold the main image (miffypink or miffyheartbaloon) */
-    margin-bottom: 20px;
-}
-
-#question {
-    /* Normal font for the question, bigger size if desired */
+  }
+  
+  #question {
     font-size: 32px;
-    font-weight: normal;
-}
-
-/* Buttons container */
-#options {
+  }
+  
+  /* Buttons container */
+  #options {
     margin-top: 20px;
-}
-
-/* Style for the two buttons */
-button {
+  }
+  
+  /* Both buttons have the same styling for example */
+  button {
     padding: 10px 20px;
     margin: 0 10px;
     font-size: 20px;
-    font-family: Arial, sans-serif; /* Normal font, no cursive */
+    font-family: Arial, sans-serif;
     background-color: #FB607F;
     color: white;
     border: none;
     cursor: pointer;
-}
-
-/* Hide hearts at the beginning (we will show them after "Yes") */
-#heart-left,
-#heart-right {
-    display: none; /* Hidden by default */
-    position: absolute;
+  }
+  
+  /* The "Yes" button is absolutely positioned so it can move around the container */
+  #yes-button {
+    position: absolute; /* critical for run-away effect */
+    left: 50%;
     top: 50%;
-    transform: translateY(-50%);
-}
-
-/* Left hearts image container */
-#heart-left {
-    left: 0;
-}
-
-/* Right hearts image container */
-#heart-right {
-    right: 0;
-}
-
-/* Optional: set a max-width for the hearts.gif if needed */
-#left-hearts-image,
-#right-hearts-image {
-    max-width: 150px;
-    height: auto;
-}
+    transform: translate(-50%, -50%); /* initial center position */
+  }
+  
